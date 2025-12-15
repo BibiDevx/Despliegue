@@ -147,11 +147,11 @@ class UserSeeder extends Seeder
             ],
         ];
 
-        DB::table('usuario')->insert($users);
+        DB::table('users')->insert($users);
 
         // 3. Ajuste del contador AUTO_INCREMENT
         // El último ID usado es 17, el siguiente debe ser 18.
-        DB::statement('ALTER TABLE usuario AUTO_INCREMENT = 18;');
+        DB::statement('ALTER TABLE users AUTO_INCREMENT = 18;');
         
         // 4. Reactivación de FK
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
