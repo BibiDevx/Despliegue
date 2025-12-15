@@ -17,10 +17,10 @@ class RolSeeder extends Seeder
 
         DB::table('rol')->insert([
             // ID 1
-            ['idRol' => 1, 'nombre' => 'Cliente', 'created_at' => now(), 'updated_at' => now()],
+            ['idRol' => 1, 'nombreRol' => 'Cliente', 'created_at' => now(), 'updated_at' => now()],
             // ID 2
-            ['idRol' => 2, 'nombre' => 'Admin', 'created_at' => now(), 'updated_at' => now()],
-            ['idRol' => 3, 'nombre' => 'SuperAdmin', 'created_at' => now(), 'updated_at' => now()],
+            ['idRol' => 2, 'nombreRol' => 'Admin', 'created_at' => now(), 'updated_at' => now()],
+            ['idRol' => 3, 'nombreRol' => 'SuperAdmin', 'created_at' => now(), 'updated_at' => now()],
         ]);
 
         // Aseguramos que el AUTO_INCREMENT comience después del 2
