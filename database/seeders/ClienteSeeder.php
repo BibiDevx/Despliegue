@@ -13,6 +13,7 @@ class ClienteSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         // 1. Limpia la tabla
         DB::table('cliente')->truncate(); 
 
@@ -92,6 +93,7 @@ class ClienteSeeder extends Seeder
             ],
         ]);
         
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         // 3. Ajustamos el AUTO_INCREMENT después del ID 6
         DB::statement('ALTER TABLE cliente AUTO_INCREMENT = 7;');
     }
