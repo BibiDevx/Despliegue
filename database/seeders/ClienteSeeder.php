@@ -27,7 +27,7 @@ class ClienteSeeder extends Seeder
                 'nombreCliente' => 'Juana', 
                 'apellidoCliente' => 'Perez', 
                 'telefonoCliente' => '3219876543', 
-                'direccionCliente' => 'Calle 10 # 5-20',
+                'direccion' => 'Calle 10 # 5-20',
                 'created_at' => '2025-04-03 23:21:12', 
                 'updated_at' => '2025-04-19 06:48:10'
             ],
@@ -39,7 +39,7 @@ class ClienteSeeder extends Seeder
                 'nombreCliente' => 'Laura', 
                 'apellidoCliente' => 'Gomez', 
                 'telefonoCliente' => '3001234567', 
-                'direccionCliente' => 'Carrera 7 # 15-30',
+                'direccion' => 'Carrera 7 # 15-30',
                 'created_at' => '2025-04-19 05:26:47', 
                 'updated_at' => '2025-04-19 05:26:47'
             ],
@@ -51,7 +51,7 @@ class ClienteSeeder extends Seeder
                 'nombreCliente' => 'Carlos', 
                 'apellidoCliente' => 'Ramirez', 
                 'telefonoCliente' => '3012345678', 
-                'direccionCliente' => 'Avenida 80 # 45-10',
+                'direccion' => 'Avenida 80 # 45-10',
                 'created_at' => '2025-04-19 05:27:31', 
                 'updated_at' => '2025-04-19 05:27:31'
             ],
@@ -63,7 +63,7 @@ class ClienteSeeder extends Seeder
                 'nombreCliente' => 'Diana', 
                 'apellidoCliente' => 'Martinez', 
                 'telefonoCliente' => '3023456789', 
-                'direccionCliente' => 'Transversal 50 # 2-80',
+                'direccion' => 'Transversal 50 # 2-80',
                 'created_at' => '2025-04-19 05:27:41', 
                 'updated_at' => '2025-04-19 05:27:41'
             ],
@@ -75,7 +75,7 @@ class ClienteSeeder extends Seeder
                 'nombreCliente' => 'Andres', 
                 'apellidoCliente' => 'Lopez', 
                 'telefonoCliente' => '3034567890', 
-                'direccionCliente' => 'Diagonal 25 # 77-12',
+                'direccion' => 'Diagonal 25 # 77-12',
                 'created_at' => '2025-04-19 05:27:47', 
                 'updated_at' => '2025-04-19 05:27:47'
             ],
@@ -87,7 +87,7 @@ class ClienteSeeder extends Seeder
                 'nombreCliente' => 'Test', 
                 'apellidoCliente' => 'Client', 
                 'telefonoCliente' => '3045678901', 
-                'direccionCliente' => 'Calle Falsa 123',
+                'direccion' => 'Calle Falsa 123',
                 'created_at' => '2025-04-23 01:39:15', 
                 'updated_at' => '2025-04-23 01:39:15'
             ],
