@@ -13,6 +13,7 @@ class FacturaSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('factura')->truncate(); 
 
         // Datos de la Factura
@@ -26,7 +27,7 @@ class FacturaSeeder extends Seeder
                 'updated_at' => '2025-06-27 05:23:51'
             ],
         ]);
-        
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         // Ajustamos el AUTO_INCREMENT después del ID 1
         DB::statement('ALTER TABLE factura AUTO_INCREMENT = 2;');
     }

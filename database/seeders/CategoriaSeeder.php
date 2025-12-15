@@ -13,6 +13,7 @@ class CategoriaSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('categoria')->truncate(); 
 
         // Datos de Categorías (componentes de PC)
@@ -55,6 +56,7 @@ class CategoriaSeeder extends Seeder
             ['idCategoria' => 18, 'nombreCategoria' => 'CAMARAS', 'created_at' => '2025-04-17 02:26:43', 'updated_at' => '2025-04-17 02:26:43'],
         ]);
         
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         // Ajustamos el AUTO_INCREMENT después del ID 18
         DB::statement('ALTER TABLE categoria AUTO_INCREMENT = 19;');
     }

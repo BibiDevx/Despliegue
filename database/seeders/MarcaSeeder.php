@@ -13,6 +13,7 @@ class MarcaSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('marca')->truncate(); 
 
         // Datos de Marcas
@@ -52,7 +53,7 @@ class MarcaSeeder extends Seeder
             // ID 17
             ['idMarca' => 17, 'nombreMarca' => 'SanDisk ', 'created_at' => '2025-04-17 02:32:46', 'updated_at' => '2025-04-17 02:32:46'],
         ]);
-        
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         // Ajustamos el AUTO_INCREMENT después del ID 17
         DB::statement('ALTER TABLE marca AUTO_INCREMENT = 18;');
     }

@@ -13,6 +13,7 @@ class ProveedorSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('proveedor')->truncate(); 
 
         // Datos del Proveedor
@@ -26,7 +27,7 @@ class ProveedorSeeder extends Seeder
                 'updated_at' => '2025-04-03 18:24:30'
             ],
         ]);
-        
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         // Ajustamos el AUTO_INCREMENT después del ID 1
         DB::statement('ALTER TABLE proveedor AUTO_INCREMENT = 2;');
     }

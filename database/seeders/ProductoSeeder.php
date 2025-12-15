@@ -13,6 +13,7 @@ class ProductoSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('producto')->truncate(); 
 
         // Datos de Productos (21 registros)
@@ -291,7 +292,7 @@ class ProductoSeeder extends Seeder
                 'updated_at' => '2025-06-27 05:23:51',
             ],
         ]);
-        
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         // Ajustamos el AUTO_INCREMENT después del ID 21
         DB::statement('ALTER TABLE producto AUTO_INCREMENT = 22;');
     }

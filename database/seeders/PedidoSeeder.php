@@ -13,6 +13,7 @@ class PedidoSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('pedido')->truncate(); 
 
         // Datos del Pedido
@@ -25,7 +26,7 @@ class PedidoSeeder extends Seeder
                 'updated_at' => '2025-06-27 05:23:51'
             ],
         ]);
-        
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         // Ajustamos el AUTO_INCREMENT después del ID 2
         DB::statement('ALTER TABLE pedido AUTO_INCREMENT = 3;');
     }
