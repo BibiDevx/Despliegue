@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -11,7 +12,9 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
 
-    {
+    {   
+        // 1. DESACTIVAR LA VERIFICACIÓN DE CLAVES FORÁNEAS
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         $this->call([
 
@@ -31,6 +34,8 @@ class DatabaseSeeder extends Seeder
             PedidoSeeder::class,
             PedidoProductoSeeder::class,
             FacturaSeeder::class, // <-- ¡AÑADIDO AQUÍ!
+            // 2. ACTIVAR LA VERIFICACIÓN DE CLAVES FORÁNEAS
         ]);
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
