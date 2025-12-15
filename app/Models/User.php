@@ -14,39 +14,21 @@ class User extends Authenticatable implements JWTSubject{
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+   protected $table = 'users';
+
+    protected $primaryKey = 'idUsuario';
+
     protected $fillable = [
-        'name',
+        'idRol',
         'email',
-        'password',
+        'password'
     ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', // Oculta la contraseña en respuestas JSON
+        'created_at', 'updated_at'
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    // 🔹 Métodos para JWT
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -55,5 +37,21 @@ class User extends Authenticatable implements JWTSubject{
     public function getJWTCustomClaims()
     {
         return [];
+    }
+    public function rol()
+    {
+        return $this->belongsTo(Rol::class, 'idRol');
+    }
+    public function admin()
+    {
+        return $this->hasOne(Admin::class, 'idUsuario');
+    }
+    public function cliente()
+    {
+        return $this->hasOne(Cliente::class, 'idUsuario');
+    }
+    public function esSuperAdmin()
+    {
+        return $this->rol && $this->rol->nombreRol === 'SuperAdmin';
     }
 }
