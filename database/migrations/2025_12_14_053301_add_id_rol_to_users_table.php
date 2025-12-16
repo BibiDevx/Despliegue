@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('usuario', function (Blueprint $table) {
     $table->unsignedInteger('idRol')->after('idUsuario')->nullable();
 
     $table->foreign('idRol')
@@ -26,7 +26,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-         Schema::table('users', function (Blueprint $table) {
+         Schema::table('usuario', function (Blueprint $table) {
             $table->dropForeign(['idRol']);
             $table->dropColumn('idRol');
         });

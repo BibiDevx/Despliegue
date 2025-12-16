@@ -66,7 +66,7 @@ class adminController extends BaseController
     {
         // Carga ansiosa (eager loading) de la relación 'usuario',
         // seleccionando solo las columnas 'idUsuario' y 'email'.
-        $admins = Admin::with('users:idUsuario,email')->get();
+        $admins = Admin::with('usuario:idUsuario,email')->get();
         return $this->sendResponse($admins, 'Lista de admins obtenida exitosamente.');
     }
 
@@ -108,7 +108,7 @@ class adminController extends BaseController
     public function show($id)
     {
         // Carga ansiosa de la relación 'usuario' también para una búsqueda individual.
-        $admin = Admin::with('users:idUsuario,email')->find($id);
+        $admin = Admin::with('usuario:idUsuario,email')->find($id);
         if (!$admin) {
             return $this->sendError('Admin no encontrado.', [], 404);
         }
