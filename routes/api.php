@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\usuarioController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\categoriaController;
 use App\Http\Controllers\clienteController;
@@ -104,21 +104,21 @@ Route::middleware(['auth:api', 'role:SuperAdmin'])->group(function () {
 
     // Obtener la lista completa de usuarios con sus roles asociados
     // Esta ruta es la que usará `userService.getAllUsersWithRoles`
-    Route::get('/usuarios-con-roles', [usuarioController::class, 'indexUsersWithRoles']);
+    Route::get('/usuarios-con-roles', [UsuarioController::class, 'indexUsersWithRoles']);
 
     // Actualizar el rol de un usuario específico
     // Esta ruta es la que usará `userService.updateUserRole`
-    Route::patch('/usuarios/{idUsuario}/actualizar-rol', [usuarioController::class, 'updateRol'])
+    Route::patch('/usuarios/{idUsuario}/actualizar-rol', [UsuarioController::class, 'updateRol'])
         ->where('idUsuario', '[0-9]+');
 
     // Obtener los detalles de un usuario específico por ID
     // Esta ruta es la que usará `userService.getUserById` (si lo implementas en el frontend)
-    Route::get('/usuarios/{idUsuario}', [usuarioController::class, 'show'])
+    Route::get('/usuarios/{idUsuario}', [UsuarioController::class, 'show'])
         ->where('idUsuario', '[0-9]+');
 
     // Eliminar un usuario específico por ID
     // Esta ruta es la que usará `userService.deleteUser`
-    Route::delete('/usuarios/{idUsuario}', [usuarioController::class, 'destroy'])
+    Route::delete('/usuarios/{idUsuario}', [UsuarioController::class, 'destroy'])
         ->where('idUsuario', '[0-9]+');
 
     // Ruta para solicitar el enlace de restablecimiento (la que usa tu frontend ahora)
