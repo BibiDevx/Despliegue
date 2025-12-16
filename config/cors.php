@@ -8,7 +8,7 @@ return [
 
     'allowed_origins' => [
         'https://despliguefront-production.up.railway.app',
-        'https://despliguefront-production-4ab1.up.railway.app/',
+        'https://despliguefront-production-56be.up.railway.app',
     ],
 
     'allowed_origins_patterns' => [],
