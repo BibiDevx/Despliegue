@@ -109,11 +109,12 @@ use Tymon\JWTAuth\Facades\JWTAuth;
  */
 class AuthController extends BaseController
 {
-    //constructor usuarioController
-    protected $usuarioController;
-    public function __construct(UsuarioController $usuarioController)
+    //constructor UsuarioController
+    protected $UsuarioController;
+
+    public function __construct(UsuarioController $UsuarioController)
     {
-        $this->usuarioController = $usuarioController;
+        $this->UsuarioController = $UsuarioController;
     }
 
     /**
@@ -172,7 +173,7 @@ class AuthController extends BaseController
         }
 
         // 🔹 Llamar a UsuarioController para crear o recuperar usuario
-        $usuario = $this->usuarioController->crearObtenerUsuario('Cliente', $request->email, $request->password);
+        $usuario = $this->UsuarioController->crearObtenerUsuario('Cliente', $request->email, $request->password);
 
 
         if (!$usuario) {
@@ -246,7 +247,7 @@ class AuthController extends BaseController
         }
 
         // 🔹 Llamar a UsuarioController para crear o recuperar usuario
-        $usuario = $this->usuarioController->crearObtenerUsuario('Admin', $request->email, $request->password);
+        $usuario = $this->UsuarioController->crearObtenerUsuario('Admin', $request->email, $request->password);
 
         if (!$usuario) {
             return response()->json(['error' => 'No se pudo crear el usuario'], 500);

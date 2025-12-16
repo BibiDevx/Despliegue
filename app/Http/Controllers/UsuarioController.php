@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Validator;
  * }
  * )
  */
-class usuarioController extends BaseController // Asegúrate de extender tu BaseController
+class UsuarioController extends BaseController // Asegúrate de extender tu BaseController
 {
     // Método auxiliar para crear u obtener usuario (usado internamente, por ejemplo, por AuthController)
     // Se asume que este método YA ESTÁ siendo llamado por tus controladores de registro de Admin/Cliente.
