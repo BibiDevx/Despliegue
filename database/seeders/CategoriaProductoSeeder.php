@@ -13,6 +13,7 @@ class CategoriaProductoSeeder extends Seeder
      */
     public function run(): void
     {
+         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('categoriaproducto')->truncate(); 
 
         // Datos de la tabla pivote categoriaproducto (Producto ID, Categoria ID)
@@ -73,5 +74,6 @@ class CategoriaProductoSeeder extends Seeder
             ['idProducto' => 21, 'idCategoria' => 6], // PERIFERICOS
             ['idProducto' => 21, 'idCategoria' => 9], // TECLADOS
         ]);
+         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

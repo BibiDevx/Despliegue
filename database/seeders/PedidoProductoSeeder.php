@@ -13,6 +13,7 @@ class PedidoProductoSeeder extends Seeder
      */
     public function run(): void
     {
+         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('pedidoproducto')->truncate(); 
 
         // Datos del detalle del Pedido 2
@@ -45,5 +46,6 @@ class PedidoProductoSeeder extends Seeder
                 'updated_at' => '2025-06-27 05:23:51'
             ],
         ]);
+         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
