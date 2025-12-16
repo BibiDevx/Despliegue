@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
-use App\Models\Usuario; // Asegúrate de tener este 'use' si el modelo de Usuario se llama así
+use App\Models\User; // Asegúrate de tener este 'use' si el modelo de Usuario se llama así
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -75,7 +75,7 @@ class clienteController extends BaseController
     public function index()
     {
         // Carga la relación 'usuario' junto con cada cliente
-        $clientes = Cliente::with('usuario')->get();
+        $clientes = Cliente::with('users')->get();
         return $this->sendResponse($clientes, 'Clientes obtenidos correctamente.');
     }
 

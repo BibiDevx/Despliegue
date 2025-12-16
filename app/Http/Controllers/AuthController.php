@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
+use App\Models\User;
 use App\Models\Cliente;
 use App\Models\Admin;
 use App\Http\Controllers\UsuarioController;
@@ -160,7 +160,7 @@ class AuthController extends BaseController
             'nombreCliente' => 'required|string|max:255|regex:/^[\pL\s\-]+$/u',
             'apellidoCliente' => 'required|string|max:255|regex:/^[\pL\s\-]+$/u',
             'cedulaCliente' => 'required|numeric|unique:cliente,cedulaCliente',
-            'email' => 'required|string|email|max:255|unique:usuario,email',
+            'email' => 'required|string|email|max:255|unique:user,email',
             'password' => 'required|string|min:6',
             'c_password' => 'required|string|min:6|same:password',
             'telefonoCliente' => 'required|numeric|digits:10',
@@ -235,7 +235,7 @@ class AuthController extends BaseController
             'nombreAdmin' => 'required|string|max:255|regex:/^[\pL\s\-]+$/u',
             'apellidoAdmin' => 'required|string|max:255|regex:/^[\pL\s\-]+$/u',
             'cedulaAdmin' => 'required|numeric|unique:admin,cedulaAdmin',
-            'email' => 'required|string|email|max:255|unique:usuario,email',
+            'email' => 'required|string|email|max:255|unique:user,email',
             'password' => 'required|string|min:6',
             'c_password' => 'required|string|min:6|same:password',
             'telefonoAdmin' => 'required|numeric|digits:10'
@@ -289,7 +289,7 @@ class AuthController extends BaseController
     {
         $credentials = $request->only('email', 'password');
 
-        $user = Usuario::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
         if (!$user) {
             return $this->sendError('Unauthorized', ['error' => 'Usuario no encontrado'], 401);
         }

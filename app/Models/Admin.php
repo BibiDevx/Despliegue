@@ -85,9 +85,9 @@ class Admin extends Model
         'cedulaAdmin',
         'telefonoAdmin'
     ];
-    public function usuario()
+    public function users()
     {
-        return $this->belongsTo(Usuario::class, 'idUsuario');
+        return $this->belongsTo(User::class, 'idUsuario');
     }
     protected $hidden = ['created_at', 'updated_at'];
 
