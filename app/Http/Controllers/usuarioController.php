@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
+use App\Models\User;
 use App\Models\Rol;
 use App\Models\Admin; // Si necesitas manejar eliminación de Admin/Cliente
 use App\Models\Cliente; // Si necesitas manejar eliminación de Admin/Cliente
@@ -40,7 +40,7 @@ class usuarioController extends BaseController // Asegúrate de extender tu Base
     {
         $rol = Rol::firstOrCreate(['nombreRol' => $nombreRol]);
 
-        $usuario = Usuario::where('email', $email)->first();
+        $usuario = User::where('email', $email)->first();
 
         if ($usuario) {
             // Si el usuario existe, se asume que no debe tener otro rol
@@ -53,7 +53,7 @@ class usuarioController extends BaseController // Asegúrate de extender tu Base
             return $usuario;
         }
 
-        $usuario = Usuario::create([
+        $usuario = User::create([
             'idRol' => $rol->idRol,
             'email' => $email,
             'password' => Hash::make($password),
@@ -93,7 +93,7 @@ class usuarioController extends BaseController // Asegúrate de extender tu Base
     {
         // Carga ansiosa la relación 'rol' para cada usuario
         // Seleccionamos las columnas necesarias de 'usuario' y de 'rol'
-        $usuarios = Usuario::with('rol:idRol,nombreRol')->get([
+        $usuarios = User::with('rol:idRol,nombreRol')->get([
             'idUsuario', 'email', 'idRol' // Incluye idRol para preseleccionar en el frontend
             // Agrega aquí cualquier otra columna que necesites del modelo Usuario para mostrar
         ]);
@@ -138,7 +138,7 @@ class usuarioController extends BaseController // Asegúrate de extender tu Base
      */
     public function show($idUsuario)
     {
-        $usuario = Usuario::with('rol:idRol,nombreRol')->find($idUsuario);
+        $usuario = User::with('rol:idRol,nombreRol')->find($idUsuario);
         if (!$usuario) {
             return $this->sendError('Usuario no encontrado.', [], 404);
         }
@@ -206,7 +206,7 @@ class usuarioController extends BaseController // Asegúrate de extender tu Base
             return $this->sendError('No autorizado. Solo SuperAdmin puede actualizar roles de usuarios.', [], 403);
         }
 
-        $usuario = Usuario::find($idUsuario);
+        $usuario = User::find($idUsuario);
         if (is_null($usuario)) {
             return $this->sendError('Usuario no encontrado.', [], 404);
         }
@@ -294,14 +294,14 @@ class usuarioController extends BaseController // Asegúrate de extender tu Base
             return $this->sendError('No autorizado. Solo SuperAdmin puede eliminar usuarios.', [], 403);
         }
 
-        $usuario = Usuario::find($idUsuario);
+        $usuario = User::find($idUsuario);
         if (!$usuario) {
             return $this->sendError('Usuario no encontrado.', [], 404);
         }
 
         // Prevenir la eliminación del último SuperAdmin
         if ($usuario->esSuperAdmin()) {
-            $superAdminsCount = Usuario::whereHas('rol', function ($query) {
+            $superAdminsCount = User::whereHas('rol', function ($query) {
                 $query->where('nombreRol', 'SuperAdmin');
             })->count();
 
